@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CatalogPage extends BasePage {
+    private By searchField = By.className("fast-search__input");
+    public By iframe = By.className("modal-iframe");
 
     public CatalogPage(WebDriver driver) {
         super(driver);
@@ -31,6 +33,11 @@ public class CatalogPage extends BasePage {
         return this;
     }
 
-
+    public CatalogPage searchInfo(String text) {
+        logger.debug("searchInfo");
+        driver.findElement(searchField).click();
+        driver.findElement(searchField).sendKeys(text);
+        return this;
+    }
 }
 

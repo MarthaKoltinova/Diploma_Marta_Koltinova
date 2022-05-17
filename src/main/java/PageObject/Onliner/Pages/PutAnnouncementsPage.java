@@ -3,19 +3,23 @@ package PageObject.Onliner.Pages;
 import PageObject.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
 
+import java.time.Duration;
 import java.util.Random;
 
 public class PutAnnouncementsPage extends BasePage {
     public By descriptionField = By.cssSelector(".input-style.input-style_primary.input-style_big.baralog-form__input.baralog-form__input_width_xxxl.baralog-form__input_height_xs");
     public By restSymbolsText = By.className("baralog-form__label-description");
-    private final String fileName = "profile.png";
-    private final String filePath = "C:\\Users\\marta\\IdeaProjects\\Diploma_Marta_Koltinova\\Images\\";
-    public By chooseFile = By.xpath("//*[@class='drop-style__content']//*[@class='drop-style__link-faux']");
+    public By chooseFile = By.xpath("//label[@class='drop-style__link']//input[@type='file']");
     public By image = By.cssSelector(".drop-style__upload-item.drop-style__upload-item_primary.drop-style__upload-item_repeat");
+    protected WebDriverWait wait;
 
     public PutAnnouncementsPage(WebDriver driver) {
         super(driver);
+        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
     }
 
     public String generateRandomString(Integer length) {
@@ -35,10 +39,17 @@ public class PutAnnouncementsPage extends BasePage {
         return randomString;
     }
 
-    public PutAnnouncementsPage sendFileName() throws InterruptedException {
-        driver.findElement(chooseFile).click();
-        Thread.sleep(1200);
-        driver.findElement(chooseFile).sendKeys(filePath + fileName);
+    public PutAnnouncementsPage sendFileName()  {
+        try {
+            logger.info("send file name started");
+            JavascriptExecutor j = (JavascriptExecutor) driver;
+            logger.info(" JavascriptExecutor created");
+            j.executeScript("document.getElementsByClassName(\"drop-style__link-real\")[0].classList.remove(\"drop-style__link-real\");");
+            driver.findElement(chooseFile).sendKeys("C:\\Users\\marta\\IdeaProjects\\Diploma_Marta_Koltinova\\src\\main\\java\\Images\\profile.png");
+            logger.info("done");
+        } catch (Exception e) {
+            logger.info(e);
+        }
         return this;
     }
 }

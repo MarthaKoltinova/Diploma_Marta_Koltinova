@@ -4,10 +4,7 @@ import BaseObjects.BaseTest;
 import PageObject.BaseGroupChecks;
 import PageObject.BasePage;
 import PageObject.BasePageChecks;
-import PageObject.Onliner.Enums.Category;
-import PageObject.Onliner.Enums.Group;
-import PageObject.Onliner.Enums.Menu;
-import PageObject.Onliner.Enums.SubCategory;
+import PageObject.Onliner.Enums.*;
 import PageObject.Onliner.Pages.*;
 import org.checkerframework.checker.units.qual.C;
 import org.testng.annotations.BeforeMethod;
@@ -41,8 +38,8 @@ public class Diploma extends BaseTest {
         logger.info("Test verifySizeOfDescriptionField finished");
     }
 
-    @Test(priority = 2, enabled = false)
-    public void uploadFile() throws InterruptedException {
+    @Test(priority = 2)
+    public void uploadFile()  {
         logger.info("Test uploadFile  started");
         get(PutAnnouncementsPage.class)
                 .sendFileName();
@@ -51,7 +48,7 @@ public class Diploma extends BaseTest {
         logger.info("Test uploadFile finished");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3,enabled = false)
     public void addItemToCart() {
         logger.info("Test addItemToCart  started");
         get(HomePage.class)
@@ -71,7 +68,7 @@ public class Diploma extends BaseTest {
         logger.info("Test addItemToCart finished");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4,enabled = false)
     public void deleteItemFromCart() {
         logger.info("Test deleteItemFromCart  started");
         get(CartPage.class)
@@ -79,14 +76,26 @@ public class Diploma extends BaseTest {
         logger.info("Test deleteItemFromCart finished");
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5,enabled = false)
+    public void dialogWindowTest() {
+        logger.info("Test dialogWindowTest  started");
+        get(HomePage.class)
+                .open(property.getProperty("url"));
+        get(CatalogPage.class)
+                .searchInfo("Apple");
+        get(CatalogPageChecks.class)
+                .verifyDialogWindow();
+        logger.info("Test dialogWindowTest finished");
+    }
+
+    @Test(priority = 6,enabled = false)
     public void putIncorrectData() {
         logger.info("Test putIncorrectData  started");
         get(HomePage.class)
-                .open(property.getProperty("url"));
+               .open(property.getProperty("url"));
         get(BasePage.class)
-                .clickOnProfile()
-                .clickOnSignOut();
+              .clickOnProfile()
+               .clickOnSignOut();
         get(HomePage.class)
                 .clickOnEntrance();
         get(LoginPage.class)
@@ -97,12 +106,10 @@ public class Diploma extends BaseTest {
                 .enterEmail("12345");
         get(LoginPageChecks.class)
                 .verifyThatEmailHintIs("Некорректный e-mail");
-        get(LoginPage.class)
-                .enterPassword(1234);
         logger.info("Test putIncorrectData finished");
     }
 
-    @Test(priority = 6)
+    @Test(priority = 7,enabled = false)
     public void putInsufficientCountOfData() {
         logger.info("Test putInsufficientCountOfData  started");
         get(LoginPage.class)
