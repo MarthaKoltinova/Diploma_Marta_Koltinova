@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CartPage extends BasePage {
-    public By deleteButton = By.className("cart-form__control");
+    public By deleteButton = By.xpath("//*[contains(@class,'cart-form__button_remove')]");
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -13,7 +13,7 @@ public class CartPage extends BasePage {
 
     public CartPage deleteItem() {
         logger.debug("delete item");
-        driver.findElement(deleteButton).click();
+        actions.moveToElement(driver.findElement(deleteButton)).click().perform();
         return this;
     }
 }

@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,6 +16,7 @@ import java.time.Duration;
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected Actions actions;
     protected Logger logger = Logger.getLogger(BasePage.class);
     private By entrance = By.cssSelector(".auth-bar__item.auth-bar__item--text");
     private By profile = By.cssSelector(".b-top-profile__preview.js-toggle-bar");
@@ -26,6 +28,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(25));
+        this.actions = new Actions(this.driver);
     }
 
     public BasePage click(By element) {
