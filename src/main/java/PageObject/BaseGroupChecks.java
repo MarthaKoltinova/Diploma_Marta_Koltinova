@@ -21,11 +21,4 @@ public class BaseGroupChecks extends BaseGroup {
         return this;
     }
 
-    public BaseGroupChecks checkSearchResults(String expected) {
-        getSearchResults().forEach(actual -> {
-            logger.info("Check that " + expected + " contains in " + actual);
-            Assert.assertTrue(actual.contains(expected), "Check that " + expected + " contains in " + actual);
-        });
-        return this;
-    }
 }

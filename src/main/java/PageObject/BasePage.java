@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.List;
 
 import java.time.Duration;
@@ -16,7 +17,6 @@ public class BasePage {
     protected WebDriverWait wait;
     protected Logger logger = Logger.getLogger(BasePage.class);
     private By entrance = By.cssSelector(".auth-bar__item.auth-bar__item--text");
-    private By cart = By.cssSelector(".auth-bar__item.auth-bar__item--cart");
     private By profile = By.cssSelector(".b-top-profile__preview.js-toggle-bar");
     private By announcement = By.cssSelector(".b-top-profile__link.b-top-profile__link_alter.js-open-submenu");
     public By catalogAnnouncements = By.linkText("Объявления в каталоге");
@@ -46,20 +46,14 @@ public class BasePage {
         return this;
     }
 
-    public BasePage goToCart() {
-        logger.debug("go to cart");
-        driver.findElement(cart).click();
-        return this;
-    }
-
-    public BasePage clickOnProfile()  {
+    public BasePage clickOnProfile() {
         logger.debug("Click on profile");
         wait.until(ExpectedConditions.visibilityOfElementLocated(profile));
         driver.findElement(profile).click();
         return this;
     }
 
-    public BasePage clickOnSignOut()  {
+    public BasePage clickOnSignOut() {
         logger.debug("Click on SignOut");
         driver.findElement(signOut).click();
         return this;
@@ -82,6 +76,4 @@ public class BasePage {
         return elementList.size() > 0;
 
     }
-
-
 }

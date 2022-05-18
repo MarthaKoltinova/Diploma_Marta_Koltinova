@@ -39,7 +39,7 @@ public class PutAnnouncementsPage extends BasePage {
         return randomString;
     }
 
-    public PutAnnouncementsPage sendFileName()  {
+    public PutAnnouncementsPage sendFileName() {
         try {
             logger.info("send file name started");
             JavascriptExecutor j = (JavascriptExecutor) driver;

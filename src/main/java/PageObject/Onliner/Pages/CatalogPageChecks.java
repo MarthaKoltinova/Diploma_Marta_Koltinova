@@ -7,6 +7,7 @@ public class CatalogPageChecks extends CatalogPage {
     public CatalogPageChecks(WebDriver driver) {
         super(driver);
     }
+
     public CatalogPageChecks verifyDialogWindow() {
         logger.debug("verifyDialogWindow");
         Assert.assertTrue(isElementExist(iframe));

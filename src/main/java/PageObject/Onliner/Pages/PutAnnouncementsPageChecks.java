@@ -9,18 +9,18 @@ public class PutAnnouncementsPageChecks extends PutAnnouncementsPage {
         super(driver);
     }
 
-    public PutAnnouncementsPage verifySizeOfDescriptionField(String value,String value2){
+    public PutAnnouncementsPage verifySizeOfDescriptionField(String value, String value2) {
         logger.debug("verify size of description");
         driver.findElement(descriptionField).click();
         String generatedValue = generateRandomString(999);
         driver.findElement(descriptionField).sendKeys(generatedValue);
-        Assert.assertEquals( driver.findElement(restSymbolsText).getText(), value);
-        driver.findElement(descriptionField).sendKeys(generatedValue+"1");
-        Assert.assertEquals( driver.findElement(restSymbolsText).getText(), value2);
+        Assert.assertEquals(driver.findElement(restSymbolsText).getText(), value);
+        driver.findElement(descriptionField).sendKeys(generatedValue + "1");
+        Assert.assertEquals(driver.findElement(restSymbolsText).getText(), value2);
         return this;
     }
 
-    public PutAnnouncementsPage verifyImageUploaded(){
+    public PutAnnouncementsPage verifyImageUploaded() {
         logger.debug("verify Image Uploaded");
         Assert.assertTrue(driver.findElement(image).isDisplayed());
         return this;

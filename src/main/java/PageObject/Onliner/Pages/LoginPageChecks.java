@@ -25,10 +25,4 @@ public class LoginPageChecks extends LoginPage {
         Assert.assertEquals(getPasswordHint(), value);
         return this;
     }
-
-    public LoginPageChecks verifyThatRepeatPasswordHintsIs(String value) {
-        logger.debug("hint incorrect repeat password");
-        Assert.assertEquals(getRepeatPasswordHint(), value);
-        return this;
-    }
 }

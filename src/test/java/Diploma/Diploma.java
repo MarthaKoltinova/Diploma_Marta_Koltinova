@@ -3,10 +3,11 @@ package Diploma;
 import BaseObjects.BaseTest;
 import PageObject.BaseGroupChecks;
 import PageObject.BasePage;
-import PageObject.BasePageChecks;
-import PageObject.Onliner.Enums.*;
+import PageObject.Onliner.Enums.Category;
+import PageObject.Onliner.Enums.Group;
+import PageObject.Onliner.Enums.Menu;
+import PageObject.Onliner.Enums.SubCategory;
 import PageObject.Onliner.Pages.*;
-import org.checkerframework.checker.units.qual.C;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,6 @@ public class Diploma extends BaseTest {
 
     @BeforeMethod
     public void preconditions() {
-
     }
 
     @Test(priority = 1)
@@ -39,7 +39,7 @@ public class Diploma extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void uploadFile()  {
+    public void uploadFile() {
         logger.info("Test uploadFile  started");
         get(PutAnnouncementsPage.class)
                 .sendFileName();
@@ -48,7 +48,7 @@ public class Diploma extends BaseTest {
         logger.info("Test uploadFile finished");
     }
 
-    @Test(priority = 3,enabled = false)
+    @Test(priority = 3)
     public void addItemToCart() {
         logger.info("Test addItemToCart  started");
         get(HomePage.class)
@@ -68,7 +68,7 @@ public class Diploma extends BaseTest {
         logger.info("Test addItemToCart finished");
     }
 
-    @Test(priority = 4,enabled = false)
+    @Test(priority = 4)
     public void deleteItemFromCart() {
         logger.info("Test deleteItemFromCart  started");
         get(CartPage.class)
@@ -76,7 +76,7 @@ public class Diploma extends BaseTest {
         logger.info("Test deleteItemFromCart finished");
     }
 
-    @Test(priority = 5,enabled = false)
+    @Test(priority = 5)
     public void dialogWindowTest() {
         logger.info("Test dialogWindowTest  started");
         get(HomePage.class)
@@ -88,14 +88,14 @@ public class Diploma extends BaseTest {
         logger.info("Test dialogWindowTest finished");
     }
 
-    @Test(priority = 6,enabled = false)
+    @Test(priority = 6)
     public void putIncorrectData() {
         logger.info("Test putIncorrectData  started");
         get(HomePage.class)
-               .open(property.getProperty("url"));
+                .open(property.getProperty("url"));
         get(BasePage.class)
-              .clickOnProfile()
-               .clickOnSignOut();
+                .clickOnProfile()
+                .clickOnSignOut();
         get(HomePage.class)
                 .clickOnEntrance();
         get(LoginPage.class)
@@ -109,7 +109,7 @@ public class Diploma extends BaseTest {
         logger.info("Test putIncorrectData finished");
     }
 
-    @Test(priority = 7,enabled = false)
+    @Test(priority = 7)
     public void putInsufficientCountOfData() {
         logger.info("Test putInsufficientCountOfData  started");
         get(LoginPage.class)

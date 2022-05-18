@@ -13,8 +13,6 @@ import static io.restassured.RestAssured.baseURI;
 
 public class ApiTest extends RestHelp {
     String pathToJson = "src/test/java/ApiRequests/addItem.json";
-    String pathToJson1 = "src/test/java/ApiRequests/item.txt";
-
 
     @BeforeTest
     public void getStarted() {
@@ -44,7 +42,7 @@ public class ApiTest extends RestHelp {
     }
 
     @Test(priority = 3)
-    public void checkCleanerInCart() {
+    public void verifyFirstItem() {
         Response response = getMethod("catalog.api/products/honor508128gbeg");
         checkStatusCode(response, 200);
         Assert.assertEquals(extractJson(response, "name"), "50 8GB/128GB (изумрудно-зеленый)");
@@ -52,7 +50,7 @@ public class ApiTest extends RestHelp {
     }
 
     @Test(priority = 4)
-    public void addItemInCart() {
+    public void putPassword() {
         Response response = postMethod("user.api/reset-password", pathToJson);
         checkStatusCode(response, 428);
         Assert.assertEquals(extractJson(response, "title"), "Доступ запрещен");

@@ -2,11 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Diploma">
     <parameter name="property" value="onliner"/>
-<!--    <test name="Diploma">-->
-<!--        <classes>-->
-<!--            <class name="Diploma.Diploma"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+   <test name="Diploma">
+     <classes>
+       <class name="Diploma.Diploma"/>
+       </classes>
+    </test>
     <test name="Api Testing">
         <classes>
             <class name="ApiTest"/>
