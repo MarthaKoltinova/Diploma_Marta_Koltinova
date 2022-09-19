@@ -1,4 +1,4 @@
-Internship Project
+Diploma Project
 =====================
 Requirements
 -----------------------------------
